@@ -19,12 +19,12 @@ const PaginatedTable = ({ table, minWidth = "600px" }) => {
                       key={header.id}
                       className={
                         index === 0
-                          ? "ps-x-gap py-y-gap"
-                          : "text-left py-y-gap cursor-pointer "
+                          ? "px-3 py-3"
+                          : "text-left py-3 cursor-pointer "
                       }
                       onClick={header.column.getToggleSortingHandler()}
                     >
-                      <span className="flex items-center gap-2">
+                      <span className="flex items-center gap-2 text-nowrap">
                         {flexRender(
                           header.column.columnDef.header,
                           header.getContext()
@@ -48,7 +48,7 @@ const PaginatedTable = ({ table, minWidth = "600px" }) => {
                   {row.getVisibleCells().map((cell, ind) => (
                     <td
                       key={cell.id}
-                      className={`${ind === 0 && "ps-x-gap"} py-3`}
+                      className={`${ind === 0 && "px-3"} p-3`}
                     >
                       {flexRender(
                         cell.column.columnDef.cell,

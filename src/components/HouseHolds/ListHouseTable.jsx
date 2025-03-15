@@ -6,14 +6,16 @@ import {
 } from "@tanstack/react-table";
 import React, { useEffect, useMemo, useState } from "react";
 import PaginatedTable from "../Table/PaginatedTable";
-import { Check, OctagonMinus } from "lucide-react";
+import { View } from "lucide-react";
 import { fetchData, patchData } from "../../utils/ApiHandlers";
-import toast from "react-hot-toast";
 import Loading from "../Loading/Loading";
+import { useNavigate } from "react-router-dom";
 
 const ListHouseTable = () => {
   const [housesList, setHousesList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const columns = useMemo(
     () => [
@@ -42,9 +44,19 @@ const ListHouseTable = () => {
 
         accessorKey: "address",
         cell: ({ row }) => (
-          <div className="font-bold text-14 text-[#24282E] min-w-[90px]">
-            {row.original.address}
-          </div>
+          <div className=" text-14 text-[#24282E] ">{row.original.address}</div>
+        ),
+      },
+      {
+        header: "Action",
+
+        cell: ({ row }) => (
+          <button
+            onClick={() => navigate(`/members/${row.original.id}`)}
+            className=" cursor-pointer font-bold text-14 text-deep-navy"
+          >
+            {<View />}
+          </button>
         ),
       },
     ],
@@ -78,7 +90,7 @@ const ListHouseTable = () => {
   console.log({ housesList });
 
   return (
-    <div>
+    <div className="mt-6">
       {isLoading && <Loading />}
       <PaginatedTable table={table} minWidth="100%" />
     </div>

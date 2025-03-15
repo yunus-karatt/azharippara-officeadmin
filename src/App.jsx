@@ -9,6 +9,8 @@ import HouseHolds from "./pages/HouseHolds/HouseHolds";
 import Profile from "./pages/Profile/Profile";
 import ProtectedRoute from "../Routes/ProtectedRoutes";
 import AddHouse from "./pages/HouseHolds/AddHouse";
+import ListMembers from "./pages/HouseHolds/ListMembers";
+import AddMember from "./pages/HouseHolds/AddMember";
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
               <Route path="/houses" element={<HouseHolds />} />
               <Route path="/houses/add" element={<AddHouse />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/members/:houseId" element={<ListMembers />} />
+              <Route path="/member/add/:houseId" element={<AddMember />} />
             </Route>
           </Route>
           <Route path="*" element={<NotFound />} />

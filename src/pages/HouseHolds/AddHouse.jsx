@@ -27,7 +27,7 @@ const AddHouse = () => {
     try {
       let isValid = true;
       if (!houseData.mahalluNo) {
-        console.log("no mahall number")
+        console.log("no mahall number");
         setErrors((prev) => ({ ...prev, mahalluNo: "Required" }));
         isValid = false;
       }
@@ -43,7 +43,7 @@ const AddHouse = () => {
       console.log(Object.entries(errors).length, "length");
       if (isValid) {
         const res = await postData("/add/house", houseData);
-        toast.success("New Admin Creates");
+        toast.success("New House Addedd");
         navigate("/houses");
       }
     } catch (error) {
@@ -52,11 +52,11 @@ const AddHouse = () => {
     }
   };
 
-  console.log({errors})
+  console.log({ errors });
   return (
     <div>
       <div className="p-3 bg-light-gray flex items-center justify-between">
-        <h1 className="font-bold text-18">Add Admin</h1>
+        <h1 className="font-bold text-18">Add House</h1>
         <button
           onClick={() => navigate(-1)}
           className="flex items-center gap-1 text-soft-gold bg-deep-navy hover:bg-deep-navy/80 cursor-pointer py-2 px-3"
@@ -139,7 +139,6 @@ const AddHouse = () => {
                   Address
                 </label>
                 <div className="relative">
-                  
                   <textarea
                     id="address"
                     name="address"
@@ -157,7 +156,6 @@ const AddHouse = () => {
                   <p className="mt-1 text-red-500">{errors.address}</p>
                 )}
               </div>
-            
             </div>
           </div>
           <div className="flex  items-center justify-end gap-3 ">
